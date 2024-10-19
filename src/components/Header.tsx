@@ -15,7 +15,12 @@ import {
 
 import logo from "../images/Logo.jpeg"; // Asegúrate de la ruta correcta
 
+import { useLocation } from "react-router-dom"; // Importa useLocation
+import '../index.css'; // Asegúrate de tener este archivo CSS
+
 const App: React.FC = () => {
+  const location = useLocation(); // Obtén la ubicación actual
+
   return (
     <>
       <Navbar>
@@ -30,18 +35,18 @@ const App: React.FC = () => {
 
         <NavbarContent className="sm:flex gap-4" justify="center">
           <NavbarItem>
-            <Link href="/" color="foreground">
-              Home
-            </Link>
-          </NavbarItem>
-          <NavbarItem isActive>
-            <Link href="/criminalProfile" aria-current="page" color="secondary">
-              Perfil de criminal
+            <Link href="/" className={`nav-link ${location.pathname === "/monitoHorariosTabla" ? "active" : ""}`}>
+              Reportes de patrullaje
             </Link>
           </NavbarItem>
           <NavbarItem>
-            <Link href="/monitoHorariosTabla" color="foreground">
-              Table
+            <Link href="/criminalProfile" className={`nav-link ${location.pathname === "/" ? "active" : ""}`}>
+              Home
+            </Link>
+          </NavbarItem>
+          <NavbarItem>
+            <Link href="/monitoHorariosTabla" className={`nav-link ${location.pathname === "/criminalProfile" ? "active" : ""}`}>
+              Perfil de criminal
             </Link>
           </NavbarItem>
         </NavbarContent>
