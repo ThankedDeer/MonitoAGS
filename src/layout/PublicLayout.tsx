@@ -5,6 +5,7 @@ export const PublicLayout = () => {
   return (
     <>
       <Header></Header>
+
       <Outlet />
     </>
   );

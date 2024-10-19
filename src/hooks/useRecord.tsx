@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { instance } from "../services/base.api";
 
-const useTestimonial = () => {
+const useRecord = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string>("");
 
   const startRecordingService = (isRecording: boolean) => {
-    
+
     setLoading(true);
 
     instance
@@ -29,4 +29,4 @@ const useTestimonial = () => {
   };
 };
 
-export default useTestimonial;
+export default useRecord;
