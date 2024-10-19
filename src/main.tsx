@@ -2,11 +2,11 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
-import { PublicLayout } from "./layout/publicLayout";
-import Home from "./pages/Home";
+import { PublicLayout } from "./layout/PublicLayout";
 import MonitoHorariosTabla from "./components/MonitoHorariosTabla";
-import { NextUIProvider } from "@nextui-org/react";
-import Table from "./components/Table";
+import Home from "./pages/Home";
+import CriminalProfile from "./components/CriminalProfile";
+
 
 const router = createBrowserRouter([
   {
@@ -14,17 +14,17 @@ const router = createBrowserRouter([
     element: <PublicLayout />,
     children: [
       {
-        path: "home",
+        path: "/",
         element: <Home />,
       },
       {
         path: "monitoHorariosTabla",
-        element: <MonitoHorariosTabla/>
+        element: <MonitoHorariosTabla />,
       },
       {
-        path:"table",
-        element:<Table/>
-      }
+        path: "criminalProfile",
+        element: <CriminalProfile />,
+      },
     ],
   },
 ]);

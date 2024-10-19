@@ -10,23 +10,26 @@ import {
   DropdownMenu,
   Avatar,
 } from "@nextui-org/react";
+import logo from '../images/Logo.jpeg';
 
 export default function App() {
   return (
     <Navbar>
       <NavbarBrand>
-        <p className="font-bold text-inherit">ACME</p>
+        <img src={logo} alt="Logo de ACME" style={{ width: '50px', height: 'auto', marginRight: '10px' }} />
+
+        <p className="font-bold text-inherit">MonitorAGS</p>
       </NavbarBrand>
 
       <NavbarContent className=" sm:flex gap-4" justify="center">
         <NavbarItem>
-          <Link color="foreground" href="#">
-            Features
+          <Link href="/" color="foreground">
+            Home
           </Link>
         </NavbarItem>
         <NavbarItem isActive>
-          <Link href="#" aria-current="page" color="secondary">
-            Customers
+          <Link href="/criminalProfile" aria-current="page" color="secondary">
+            Perfil de criminal
           </Link>
         </NavbarItem>
         <NavbarItem>

@@ -21,4 +21,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-node_modules
+* text=auto
+# Node modules
+node_modules/
