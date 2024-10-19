@@ -1,20 +1,19 @@
 // src/App.tsx
 
-import React from 'react';
 import {
+  Avatar,
+  Dropdown,
+  DropdownItem,
+  DropdownMenu,
+  DropdownTrigger,
+  Link,
   Navbar,
   NavbarBrand,
   NavbarContent,
   NavbarItem,
-  Link,
-  DropdownItem,
-  DropdownTrigger,
-  Dropdown,
-  DropdownMenu,
-  Avatar,
 } from "@nextui-org/react";
+import React from 'react';
 import logo from '../images/Logo.jpeg'; // Asegúrate de la ruta correcta
-import MapComponent from './MapComponent'; // Asegúrate de que el nombre sea correcto
 
 const App: React.FC = () => {
   return (
@@ -72,7 +71,7 @@ const App: React.FC = () => {
       </Navbar>
 
       {/* Aquí puedes colocar el mapa */}
-      <MapComponent />
+     
     </>
   );
 };
