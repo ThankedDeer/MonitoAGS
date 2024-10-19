@@ -1,6 +1,13 @@
-import React, { useState, useEffect, useRef } from "react";
 import { Button, Input, Textarea } from "@nextui-org/react";
+import { useFormik } from "formik";
+import { useEffect, useRef, useState } from "react";
 
+const initialValues = {
+  name: "",
+  phoneNumber: "",
+  address: "",
+  emergency: "",
+};
 const Record = () => {
   const [transcript, setTranscript] = useState("");
   const websocketRef = useRef(null);
@@ -19,6 +26,11 @@ const Record = () => {
       websocketRef.current.onmessage = (event) => {
         // Actualizar la transcripción con el texto recibido
         setTranscript((prev) => prev + "\n" + event.data);
+        const parsedData = event.data.split(":");
+        if (parsedData.length === 2) {
+          const [field, value] = parsedData;
+          formik.setFieldValue(field.trim(), value.trim());
+        }
       };
 
       websocketRef.current.onerror = (error) => {
@@ -33,13 +45,6 @@ const Record = () => {
   };
 
   // Función para detener la grabación y cerrar la conexión WebSocket
-  const stopRecording = () => {
-    if (websocketRef.current) {
-      websocketRef.current.close();
-      websocketRef.current = null;
-      setTranscript("");
-    }
-  };
 
   useEffect(() => {
     // Limpiar la conexión WebSocket si el componente se desmonta
@@ -57,12 +62,59 @@ const Record = () => {
     }
   }, [transcript]);
 
+  const validate = (values) => {
+    const errors = {};
+
+    if (!values.address) {
+      errors.address = "Required";
+    }
+    if (!values.emergency) {
+      errors.emergency = "Required";
+    }
+    return errors;
+  };
+  const formik = useFormik({
+    initialValues,
+    validate,
+    onSubmit: (values) => {
+      alert(JSON.stringify(values, null, 2));
+
+      fetch("https://rohls-nqaaa-aaaan-qznfq-cai.raw.icp0.io/post", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: values.name,
+          phoneNumber: values.phoneNumber,
+          address: values.address,
+          emergency: values.emergency,
+        }),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log("Success:", data);
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+        });
+    },
+  });
+
+  const stopRecording = () => {
+    if (websocketRef.current) {
+      websocketRef.current.close();
+      websocketRef.current = null;
+      formik.resetForm();
+    }
+  };
+
   return (
     <section className="grid grid-cols-2 gap-4 p-6 bg-slate-900 text-white ">
       <div className="grid grid-cols-1 justify-center gap-8 bg-gray-800 p-6 rounded-lg h-full">
         <div className="mb-4 h-full">
           <div className="grid grid-cols-2">
-            <div className="mb-4 text-center">
+            <div className="mb-4">
               <h3 className="text-xl font-semibold mb-2">Audio Transcriber</h3>
               <p className="mb-4">Transcribe audio to text</p>
             </div>
@@ -97,16 +149,71 @@ const Record = () => {
         </div>
       </div>
       <div className="bg-gray-800 p-6 rounded-lg">
-        <h3 className="text-xl font-semibold mb-4">Transcription</h3>
-        <div className="flex flex-wrap gap-4 text-center align-middle justify-start">
+        <h3 className="text-xl font-semibold mb-4">911 Form</h3>
+        <div className="flex flex-wrap gap-4 ">
           <Input
-            isRequired
-            type="email"
-            label="Email"
+            type="text"
+            label="name"
+            name="name"
             defaultValue="junior@nextui.org"
             className="max-w-xs mb-4 text-white"
-            size="lg"
+            size="md"
+            onChange={formik.handleChange}
+            value={formik.values.name}
+            onBlur={formik.handleBlur}
+            isInvalid={formik.touched.name && Boolean(formik.errors.name)}
+            errorMessage={formik.touched.name && formik.errors.name}
           />
+          <Input
+            type="text"
+            label="Phone Number"
+            name="phoneNumber"
+            className="max-w-xs mb-4 text-white"
+            size="md"
+            onChange={formik.handleChange}
+            value={formik.values.phoneNumber}
+            onBlur={formik.handleBlur}
+            isInvalid={
+              formik.touched.phoneNumber && Boolean(formik.errors.phoneNumber)
+            }
+            errorMessage={
+              formik.touched.phoneNumber && formik.errors.phoneNumber
+            }
+          />
+          <Input
+            isRequired
+            type="text"
+            label="Address"
+            name="address"
+            className="max-w-xs mb-4 text-white"
+            size="md"
+            onChange={formik.handleChange}
+            value={formik.values.address}
+            onBlur={formik.handleBlur}
+            isInvalid={formik.touched.address && Boolean(formik.errors.address)}
+            errorMessage={formik.touched.address && formik.errors.address}
+          />
+          <Input
+            isRequired
+            type="text"
+            name="emergency"
+            label="Emergency Type"
+            className="max-w-xs mb-4 text-white"
+            size="md"
+            onChange={formik.handleChange}
+            value={formik.values.emergency}
+            onBlur={formik.handleBlur}
+            isInvalid={
+              formik.touched.emergency && Boolean(formik.errors.emergency)
+            }
+            errorMessage={formik.touched.emergency && formik.errors.emergency}
+          />
+          <Button
+            onPress={() => formik.handleSubmit()}
+            className="bg-primary-500 text-white px-4 py-2 rounded-lg"
+          >
+            Submit
+          </Button>
         </div>
       </div>
     </section>

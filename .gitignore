@@ -21,10 +21,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-<<<<<<< HEAD
-node_modules
-=======
 * text=auto
 # Node modules
 node_modules/
->>>>>>> 42c7d1878ba68a5796fd12a14f350e02e3b3df52
