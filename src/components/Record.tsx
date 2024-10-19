@@ -77,8 +77,6 @@ const Record = () => {
     initialValues,
     validate,
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
-
       fetch("https://rohls-nqaaa-aaaan-qznfq-cai.raw.icp0.io/post", {
         method: "POST",
         headers: {

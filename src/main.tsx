@@ -6,7 +6,7 @@ import { PublicLayout } from "./layout/PublicLayout";
 import MonitoHorariosTabla from "./components/MonitoHorariosTabla";
 import Home from "./pages/Home";
 import CriminalProfile from "./components/CriminalProfile";
-
+import { NextUIProvider } from "@nextui-org/react";
 
 const router = createBrowserRouter([
   {
@@ -25,6 +25,7 @@ const router = createBrowserRouter([
         path: "criminalProfile",
         element: <CriminalProfile />,
       },
+      
     ],
   },
 ]);
