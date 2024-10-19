@@ -2,7 +2,7 @@ import Record from "../components/Record";
 
 const Home = () => {
   return (
-    <main>
+    <main className="h-screen">
       <Record />
     </main>
   );
