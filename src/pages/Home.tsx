@@ -1,5 +1,11 @@
+import Record from "../components/Record";
+
 const Home = () => {
-  return <div>Home</div>;
+  return (
+    <main>
+      <Record />
+    </main>
+  );
 };
 
 export default Home;
