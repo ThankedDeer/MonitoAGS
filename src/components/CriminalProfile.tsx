@@ -3,18 +3,6 @@ import '../CriminalProfile.css';
 export default function CriminalProfileDesign() {
   return (
     <div className="min-h-screen bg-gray-50">
-      <header className="bg-white shadow">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-          <div className="text-xl font-bold">ACME</div>
-          <nav className="hidden md:flex space-x-8">
-            <a href="#" className="text-gray-500 hover:text-gray-700">Features</a>
-            <a href="#" className="text-purple-600 font-medium">Perfil de criminal</a>
-            <a href="#" className="text-gray-500 hover:text-gray-700">Table</a>
-          </nav>
-          <div className="w-10 h-10 bg-gray-300 rounded-full"></div>
-        </div>
-      </header>
-
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="bg-white shadow rounded-lg p-6 mb-8">
           <div className="flex justify-between items-start">
