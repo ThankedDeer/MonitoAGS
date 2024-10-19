@@ -25,8 +25,8 @@ export default function App() {
           </Link>
         </NavbarItem>
         <NavbarItem isActive>
-          <Link href="#" aria-current="page" color="secondary">
-            Customers
+          <Link href="/criminalProfile" aria-current="page" color="secondary">
+            Perfil de criminal
           </Link>
         </NavbarItem>
         <NavbarItem>

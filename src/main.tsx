@@ -6,6 +6,7 @@ import "./index.css";
 import { PublicLayout } from "./layout/publicLayout";
 import Home from "./pages/Home";
 import MonitoHorariosTabla from "./components/MonitoHorariosTabla";
+import CriminalProfile from "./components/CriminalProfile"; // Asegúrate de importar CriminalProfile
 
 const router = createBrowserRouter([
   {
@@ -18,8 +19,12 @@ const router = createBrowserRouter([
       },
       {
         path: "monitoHorariosTabla",
-        element: <MonitoHorariosTabla/>
-      }
+        element: <MonitoHorariosTabla />,
+      },
+      {
+        path: "criminalProfile", 
+        element: <CriminalProfile />, 
+      },
     ],
   },
 ]);
