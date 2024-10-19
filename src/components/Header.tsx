@@ -10,12 +10,15 @@ import {
   DropdownMenu,
   Avatar,
 } from "@nextui-org/react";
+import logo from '../images/Logo.jpeg';
 
 export default function App() {
   return (
     <Navbar>
       <NavbarBrand>
-        <p className="font-bold text-inherit">ACME</p>
+        <img src={logo} alt="Logo de ACME" style={{ width: '50px', height: 'auto', marginRight: '10px' }} />
+
+        <p className="font-bold text-inherit">MonitorAGS</p>
       </NavbarBrand>
 
       <NavbarContent className=" sm:flex gap-4" justify="center">
