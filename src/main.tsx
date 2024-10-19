@@ -14,7 +14,7 @@ const router = createBrowserRouter([
     element: <PublicLayout />,
     children: [
       {
-        path: "home",
+        path: "/",
         element: <Home />,
       },
       {
@@ -22,8 +22,8 @@ const router = createBrowserRouter([
         element: <MonitoHorariosTabla />,
       },
       {
-        path: "criminalProfile", 
-        element: <CriminalProfile />, 
+        path: "criminalProfile",
+        element: <CriminalProfile />,
       },
     ],
   },

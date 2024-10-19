@@ -23,8 +23,8 @@ export default function App() {
 
       <NavbarContent className=" sm:flex gap-4" justify="center">
         <NavbarItem>
-          <Link color="foreground" href="#">
-            Features
+          <Link href="/" color="foreground">
+            Home
           </Link>
         </NavbarItem>
         <NavbarItem isActive>
