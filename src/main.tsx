@@ -5,6 +5,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 import Header from "./components/Header";
 import Home from "./pages/Home";
+import MonitoHorariosTabla from "./components/MonitoHorariosTabla";
 
 const router = createBrowserRouter([
   {
@@ -15,6 +16,10 @@ const router = createBrowserRouter([
         path: "home",
         element: <Home />,
       },
+      {
+        path: "monitoHorariosTabla",
+        element: <MonitoHorariosTabla/>
+      }
     ],
   },
 ]);

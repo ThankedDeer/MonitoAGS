@@ -30,8 +30,8 @@ export default function App() {
           </Link>
         </NavbarItem>
         <NavbarItem>
-          <Link color="foreground" href="#">
-            Integrations
+          <Link href="/monitoHorariosTabla" color="foreground">
+            Table
           </Link>
         </NavbarItem>
       </NavbarContent>
