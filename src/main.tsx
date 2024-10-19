@@ -1,4 +1,3 @@
-import { NextUIProvider } from "@nextui-org/react";
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
@@ -6,6 +5,8 @@ import "./index.css";
 import { PublicLayout } from "./layout/publicLayout";
 import Home from "./pages/Home";
 import MonitoHorariosTabla from "./components/MonitoHorariosTabla";
+import { NextUIProvider } from "@nextui-org/react";
+import Table from "./components/Table";
 
 const router = createBrowserRouter([
   {
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
       {
         path: "monitoHorariosTabla",
         element: <MonitoHorariosTabla/>
+      },
+      {
+        path:"table",
+        element:<Table/>
       }
     ],
   },
